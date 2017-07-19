@@ -1,0 +1,33 @@
+<style>
+
+div.list-group-item.active small {
+    color:#41d6c3;
+}
+
+</style>
+
+<div>
+	<span class="dialog-drawer-toggle" ng-click="dialogCtrl.changeStateToChatting();"></span>
+	<div class="dialog-preview-scroll">
+		<div ng-repeat="event in dialogCtrl.events">
+			<div class="list-group-item active" style="height:100px;" >
+			      <div class="media col-md-3">
+			          <figure class="">
+			              <a  ng-click="dialogCtrl.submitEvent(event)" style="cursor: pointer;">
+							<event-image style="height:60%" frame-id="{{event.frameId}}"></event-image>
+						  </a>
+			          </figure>
+			      </div>
+			      <div class="col-md-6">
+			          <h4 class="list-group-item-heading"> Time stamp: {{ event.frameTime | date : "medium" }} </h4>
+			          <h4 class="list-group-item-heading"> Camera: {{event.cameraId}} </h4>
+			          <h4 ng-if="event.rule == -1" class="list-group-item-heading"> Rule: Un-defined </h4>
+			          <h4 ng-if="event.rule == 0" class="list-group-item-heading"> Rule: Ignore</h4>
+			          <h4 ng-if="event.rule == 1"class="list-group-item-heading"> Rule: Alert </h4>
+			      </div>
+			
+			</div>
+			<br/>
+		</div>
+	</div>
+</div>

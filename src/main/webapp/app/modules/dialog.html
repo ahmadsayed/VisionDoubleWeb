@@ -1,0 +1,88 @@
+<!----------------------------------------------------------------------------
+   Copyright IBM Corp. 2015
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+------------------------------------------------------------------------------>
+<section class="dialog-body-{{dialogCtrl.state.class}}">
+    <!-- App header, fixed position, fixed size -->
+    
+    <header id="dialog-header" style="background: #f2eeee none repeat scroll 0 0; box-sizing: border-box; position: fixed; top: 0; width: 100%; will-change: transform; z-index: 1000; display: block;">
+		<div style="height:10px;">
+			<div class="avatar avatar-center" style="margin-right: 10px; margin-top: 10px; margin-bottom: 10px; float: right; font-family: 'HelveticaNeueW01-77BdCn_692722,sans-serif'; font-size: 0.875em; line-height: 2.57143; text-transform: uppercase;display: table;">
+				<span> 
+					<img alt="" style="height: 36px; width: 36px; margin-left: 10px; border-radius: 20px; display: block; float: right; border: 0 none;" ng-src="{{dialogCtrl.user.photo}}">
+					<span class="ng-binding">{{dialogCtrl.user.cn}}</span>
+				</span> 
+			</div>
+			<div class="logo" style="margin: 0;width: 300px;"> 
+	 			<a href="?section=search"><span class="header-logo" style="margin-top: 10px; background-position: left center; background-image: url('app/images/Logo_Vision_Double.png'); background-position: center center; background-repeat: no-repeat; background-size: 250px 150px; display: block; height: 55px;"></span></a>  
+	 	    </div>
+		</div><!-- end .container -->           
+	</header>
+<!-- 	<div> -->
+<!--     	<span class="dialog-movie-link change-name" ng-click="dialogCtrl.changeName()" >Change Name</span> -->
+<!--     </div> -->
+    <div>
+    	<span class="dialog-movie-link start-over" ng-click="dialogCtrl.startOver()" >Start Over</span>
+    </div>
+    <!-- The area where the conversation is displayed. This is the scrollable div as opposed to the body-->
+    <div class="dialog-scrollable-div" id="scrollable-div" ng-if="dialogCtrl.state.key !== 'intro'" resize>
+        <div class="container dialog-container-{{dialogCtrl.state.class}}">
+            <!--Include the conversation html. Conversation dom will be updated by additions
+                to the 'conversation' array which is stored in the controller-->
+            <div class="dialog-center dialog-center-{{dialogCtrl.state.class}}" ng-include="'app/modules/dialog-entries.html'"></div>
+        </div>
+    </div>
+    <!--Preview control-->
+  <!--   <div id="preview-parent" class="dialog-preview-parent" 
+            ng-if="dialogCtrl.selectedRRDocuments != null && dialogCtrl.selectedRRDocuments.length > 0">
+        <preview class="dialog-preview" content="dialogCtrl.selectedMovie"></preview>
+    </div> -->
+    <div id="preview-parent" class="dialog-preview-parent" 
+            ng-if="dialogCtrl.events != null && dialogCtrl.events.length > 0 && !dialogCtrl.previewClosed">
+        <preview class="dialog-preview" content="dialogCtrl.events"></preview>
+    </div>
+    <div growl></div>
+    <div ng-if="dialogCtrl.events != null && dialogCtrl.events.length > 0 && dialogCtrl.previewClosed">
+    	<span class="dialog-movie-link show-preview" ng-click="dialogCtrl.loadPreview()" >View Events</span></div>
+
+    <!--footer, user entry field -->
+    <footer class="footer-{{dialogCtrl.state.class}}" id="dialog-footer">
+        <div class="container">
+            <form class="form" role="form" ng-submit="dialogCtrl.submit()">
+                <div class="form-group has-controls dialog-form-group-{{dialogCtrl.state.class}}">
+                    <!--At low resolutions we want to show the placeholder text in a label field as the input
+                        control is too narrow to display the full message -->
+                    <pre class="dialog-happy-text-{{dialogCtrl.state.class}}">
+                                        {{dialogCtrl.state.introText}}
+                    </pre>
+                    <table class="dialog-input-table">
+                        <tr>
+                            <td class="dialog-input-col">
+                                <input id="question" class="dialog-form-input form-control" 
+                                        type="text" 
+                                        placeholder="{{dialogCtrl.state.placeholder}}" 
+                                        ng-model="dialogCtrl.question" autocorrect="off"
+                                        autocomplete="off" 
+                                        disabled/> 
+                            </td>
+                            <td class="dialog-resize-col" id="resize-footer-col">
+                                  <!--test-->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </footer>
+</section>

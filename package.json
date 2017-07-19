@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+  	"browser-sync": "^1.7.0",
+    "gulp": "^3.8.10",
+    "gulp-angular-gettext": "^2.1.0",
+    "gulp-angular-templatecache": "^1.4.2",
+    "gulp-load-plugins": "^0.7.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "private": true
+}

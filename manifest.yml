@@ -1,0 +1,4 @@
+applications:
+- name: VisionDoubleWeb
+  path: target/vision-double-web.war
+  random-route: true

@@ -1,0 +1,13 @@
+<style>
+	.ibm-spinner-small {
+		  display: block;
+		  width: inherit;
+		  height: 20px !important;
+		  padding: 15px;
+		  background: url(/vision-double-web/app/img/animated-progress-20x20b.gif) no-repeat center center transparent;
+		  text-decoration: none;
+		}
+</style>
+
+<div class="ibm-spinner-small" ng-show="imageLoading" style="display:inline"></div>
+<img height="100px;" width="100px;" ng-src="{{imageContent}}" ng-hide="imageLoading">

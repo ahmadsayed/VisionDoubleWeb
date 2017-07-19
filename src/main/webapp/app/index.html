@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!----------------------------------------------------------------------------
+   Copyright IBM Corp. 2015
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+------------------------------------------------------------------------------>
+<html id="ng-app" ng-app="app" ng-controller="DialogController as dialogCtrl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- build:css styles/vendor.min.css -->
+<link rel="stylesheet" href="lib/angular/angular-csp.css">
+<!-- endbuild -->
+
+<!-- build:css styles/main.min.css -->
+<link href="lib/angular-growl-v2/build/angular-growl.css" rel="stylesheet">
+<link rel="stylesheet" href="app/styles/main.css">
+<link rel="stylesheet" href="app/styles/cognitive-search.css">
+<link rel="stylesheet" href="app/styles/results.css">
+<link rel="stylesheet" href="app/styles/pure-min.css">
+<link rel="stylesheet" href="app/styles/styles.css">
+
+<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.css">
+<link rel="stylesheet" href="lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+<!-- endbuild -->
+
+<title>Vision Double</title>
+
+</head>
+<body id="app-body" class="dialog-body">
+    <div style="height: 100%; width: 100%; overflow-y:auto;" ng-view></div>
+
+    <!-- build:js vendor.min.js -->
+    <script src="lib/lodash/dist/lodash.compat.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-gettext/dist/angular-gettext.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="app/vendor/lodash/lodash.js"></script>
+    
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="lib/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+    <script src="lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="lib/angular-growl-v2/build/angular-growl.js"></script>
+    
+    <!-- endbuild -->
+
+    <!-- build:js main.min.js -->
+    <script src="app/app.js"></script>
+    <script src="templates.js"></script>
+    <!-- 'fake' filename.. This will be generated during the build by gulp! -->
+    <script src="app/modules/dialog.js"></script>
+    <script src="app/modules/dialog-service.js"></script>
+    <script src="app/modules/dialog-preview-directive.js"></script>
+    <script src="app/modules/event-image-directive.js"></script>
+    <script src="app/modules/dialog-resize-directive.js"></script>
+    <script src="app/modules/dialog-showtoggle-directive.js"></script>
+    <script src="app/modules/dialog-controller.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>

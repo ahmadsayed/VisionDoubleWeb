@@ -1,0 +1,64 @@
+<!----------------------------------------------------------------------------
+   Copyright IBM Corp. 2015
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+------------------------------------------------------------------------------>
+
+<section class="dialog-response dialog-response-type-{{dialogCtrl.responseType}}">
+    <div id="dialog-cell" class="dialog-conversation-cell">
+        <div id="conversationParent" class="dialog-entries col-xs-12">
+            <div ng-animate-children class="dialog-entry row" ng-repeat="entry in dialogCtrl.conversation">
+				<div ng-if="entry.message && entry.isVisible" class="dialog-user-row">
+					<div ng-style="{{dialogCtrl.avatarStyle}}"></div>
+                    <div class="dialog-segment-bkg">
+                        <span class="dialog-row-text">{{entry.message}}</span> 
+                    </div>
+                    <hr class="dialog-line-separator">
+                </div>
+                  
+                <!-- 
+                Display watson response using directive. The directive takes care of adding
+                animation while the server is responding, and removing animation once response
+                is received
+                -->
+                <div ng-class="!entry.responses ? 'watson-thinking' : 'no-class'">
+                	<div ng-if="entry.responses && entry.responses != ' '">
+	                    <div class="dialog-watson-row" ng-if="entry != null && entry.responses != null">
+	                        <div class="dialog-segment-bkg">
+ 	                            <span class="dialog-row-text" ng-bind-html="entry.responses"></span>
+	                        </div>
+	                    </div><hr class="dialog-line-separator">
+                    </div>
+                </div>
+                
+                <!-- if choices are returned, display them after the Watson response -->
+<!--                 <div ng-if="($index == dialogCtrl.conversation.length - 1) && dialogCtrl.userInputType === 'OPTIONS_BUTTONS' && entry.choices" class="dialog-movie-links-parent"> -->
+                <div ng-if="($index == dialogCtrl.conversation.length - 1) && entry.choices && dialogCtrl.userInputType != 'DATE_PICKER'" class="dialog-movie-links-parent">     
+					<span class="dialog-movie-link" ng-repeat="choice in entry.choices" ng-click="dialogCtrl.submitLink(choice)">{{choice}}</span>
+                </div>
+				<div ng-if="($index == dialogCtrl.conversation.length - 1) && dialogCtrl.userInputType === 'DATE_PICKER'" style="margin-left: 80px; margin-top:10px;">
+					<input  type="text" placeholder="click to show datepicker" ng-model="dialogCtrl.datepicker" id="datepicker"><button type="button" class="btn btn-link" ng-click="dialogCtrl.submitDate()">Go</button>
+					<script type="text/javascript">
+			            $(document).ready(function () {
+			                $('#datepicker').datepicker({
+			                    format: "yyyy-mm-dd",
+			                    autoclose: true
+			                });
+			            });
+			        </script>
+<!--                     <input type="submit" class="btn btn-info" value="Submit" ng-click="dialogCtrl.submitOptions()"> -->
+                </div>
+        	</div>
+    	</div>
+    </div>
+</section>
